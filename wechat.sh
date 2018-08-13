@@ -2,9 +2,9 @@
 # Functions: send messages to wechat app
 # set variables
 #企业识别吗:CorpID
-CropID='wxc480e40694cd8f89'
+CropID='wx4cd8f89'
 #应用识别:Secret
-Secret='kRpGyqvYRmMv3b08qqQRNPg3_eIKewwXon4HS9T9eI4'
+Secret='kRpGyqvYRmMg3_eIKewwXon4HS9T9eI4'
 #获取tocken
 GURL="https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$CropID&corpsecret=$Secret"
 Gtoken=$(/usr/bin/curl -s -G $GURL | awk -F\: '{print $4}'| awk -F\, '{print $1}' | awk -F\"  '{print $2}')
