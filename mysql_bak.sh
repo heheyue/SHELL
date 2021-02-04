@@ -25,21 +25,21 @@ function seadmail(){
 time=`date +%Y%m%d-%H%M%S`
 runtime=`echo $time`
 mkdir ${BDSAVE_PATH}/$runtime
-/usr/bin/mysqldump -h$SERVER -P$PORT -u$USER -p$PASSWORD --opt -R syberos_db > ${BDSAVE_PATH}/$runtime/syberos_db_$runtime.sql 
-/usr/bin/mysqldump -h$SERVER -P$PORT -u$USER -p$PASSWORD --opt -R syberos_oadb > ${BDSAVE_PATH}/$runtime/syberos_oadb_$runtime.sql
+/usr/bin/mysqldump -h$SERVER -P$PORT -u$USER -p$PASSWORD --opt -R 
+/usr/bin/mysqldump -h$SERVER -P$PORT -u$USER -p$PASSWORD --opt -R 
 if [[ ! -s ${BDSAVE_PATH}/$runtime/syberos_db_$runtime.sql ]]
 then
         #echo 'sql_bak ERROR'
-	#echo "$runtime 新疆syberos_db库备份失败" | mail -s '**数据库备份通知' yanxinyue@syberos.com
-	seadmail '元心数据库备份通知' "$runtime 元心syberos_db库备份失败"
+	#echo "$runtime --库备份失败" | mail -s '**数据库备份通知' yanxinyue@syberos.com
+	seadmail '--数据库备份通知' "$runtime --库备份失败"
         exit
 fi
 #/usr/bin/mysqldump -h$SERVER -P$PORT -u$USER -p$PASSWORD --opt -R syberos_oadb > ${BDSAVE_PATH}/$runtime/syberos_oadb_$runtime.sql
 if [[ ! -s ${BDSAVE_PATH}/$runtime/syberos_oadb_$runtime.sql ]]
 then
         #echo 'sql_bak ERROR'
-	#echo "$runtime 新疆syberos_oadb库备份失败" | mail -s '**数据库备份通知' yanxinyue@syberos.com
-	seadmail '元心数据库备份通知' "$runtime 元心syberos_oadb库备份失败"
+	#echo "$runtime 份失败" | mail -s '**数据库备份通知' yanxinyue@syberos.com
+	seadmail '库备份通知' "$runtime 备份失败"
         exit
 fi
 seadmail '**库备份通知' "$runtime **库备份成功from160_101server"
